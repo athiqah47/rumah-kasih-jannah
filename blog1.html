@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>OUR BLOG1</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="validation.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            background: pink;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            text-align: center;
+            font-size: 20px;
+        }
+
+        .logo img {
+            height: 50px;
+        }
+
+        .big-title {
+            text-align: center;
+            font-size: 90px;
+            /* super big like OrphanCare */
+            font-weight: bold;
+            margin: 80px 20px 40px 20px;
+            /* big space around */
+            color: #333;
+            line-height: 1.2;
+        }
+
+        .blog-posts {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .post {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            background: white;
+            transition: 0.3s;
+        }
+
+        .post:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .post img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .post-content {
+            padding: 15px;
+        }
+
+        .read-more {
+            display: inline-block;
+            margin-top: 10px;
+            color: #f5b942;
+            text-decoration: none;
+        }
+
+        /* Dropdown Menu Styles (Keep these as they are) */
+        .dropdown-nav {
+            background-color: #82e0aa;
+            padding: 10px 20px;
+            text-align: left;
+            position: absolute;
+            /* To position it at the top */
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            /* Ensure it's above other elements */
+        }
+
+        .menu-toggle {
+            background: none;
+            border: none;
+            color: #333;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            display: none;
+            /* Hidden by default on larger screens */
+        }
+
+        .menu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+
+        .menu li {
+            margin-right: 20px;
+        }
+
+        .menu li:last-child {
+            margin-right: 0;
+        }
+
+        .menu a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .dropdown {
+            position: relative;
+        }
+
+        .dropbtn {
+            background: none;
+            border: none;
+            color: #333;
+            padding: 0;
+            cursor: pointer;
+            font-size: inherit;
+            font-weight: bold;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #00695c;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #ddd;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+
+        /* Media query for smaller screens (adjust as needed) */
+        @media (max-width: 768px) {
+            .menu {
+                display: none;
+                flex-direction: column;
+                background-color: #82e0aa;
+                width: 100%;
+                position: absolute;
+                top: 50px;
+                /* Adjust based on header height */
+                left: 0;
+                box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            }
+
+            .menu.active {
+                display: flex;
+            }
+
+            .menu li {
+                margin-right: 0;
+                padding: 10px 20px;
+                border-bottom: 1px solid #ddd;
+            }
+
+            .menu li:last-child {
+                border-bottom: none;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .dropdown-content {
+                position: static;
+                box-shadow: none;
+                width: 100%;
+            }
+
+            .dropdown-content a {
+                padding-left: 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!--Dropdown Menu-->
+    <nav class="dropdown-nav">
+        <button class="menu-toggle" aria-expanded="false" aria-controls="menu">☰ Menu</button>
+        <ul id="menu" class="menu hidden">
+            <li><a href="about.html"><i class="fas fa-info-circle"></i> ABOUT US</a></li>
+            <li><a href="campaigns.html"><i class="fas fa-bullhorn"></i> CAMPAIGNS</a></li>
+            <li><a href="get involved.html"><i class="fas fa-hands-helping"></i> GET INVOLVED</a></li>
+            <li><a href="contact.html"><i class="fas fa-envelope"></i> CONTACT US</a></li>
+            <li><a href="home.html"><i class="fas fa-home"></i> HOME</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-plus-circle"></i> MORE</a>
+                <div class="dropdown-content">
+                    <a href="counselling.html"><i class="fas fa-user-plus"></i> Counselling</a>
+                    <a href="blog1.html"><i class="fas fa-newspaper"></i> Blog</a>
+                </div>
+            </li>
+        </ul>
+    </nav>
+
+
+    <!-- Header -->
+    <div class="header">
+        <div class="logo">
+            <br>
+            <br>
+            <br>
+            <a href="#"><img src="logo.jpg" alt="Logo"></a>
+        </div>
+    </div>
+
+
+    <!-- Big Title -->
+    <div class="big-title">
+        OUR BLOG
+    </div>
+
+    <!-- Counselling Posts -->
+    <section class="blog-posts">
+        <div class="post">
+            <img src="babyhatch.jpg" alt="Story 1">
+            <div class="post-content">
+                <h2>Baby hatch sedia sistem sokongan tangani isu buang bayi</h2>
+                <p>KUCHING: Penubuhan baby hatch atau peti pelindung bayi amat penting untuk menyelamatkan nyawa bayi
+                    yang tidak
+                    berdosa sebagai sistem sokongan dalam menangani isu pembuangan bayi dan kehamilan remaja di Sarawak.
+
+                    Menteri Pembangunan Wanita, Kanak-Kanak dan Kesejahteraan Komuniti, Datuk Sri Fatimah Abdullah
+                    berkata, antara
+                    contoh kejayaan adalah melalui penubuhan yang pertama di Hospital Pakar Kuching (KPJ) yang telah
+                    berjaya
+                    menyelamatkan nyawa empat orang bayi, manakala seorang lagi ditemui sudah meninggal dunia..</p>
+                <a class="read-more" href="#">Read More</a>
+            </div>
+        </div>
+
+        <div class="post">
+            <img src="post2.jpg" alt="Story 2">
+            <div class="post-content">
+                <h2>Meraikan Anak-Anak Angkat Cikgu Saarani</h2>
+                <p>IPOH 23 Mac–Menteri Besar Perak Datuk Seri Saarani Mohamad menyampaikan sumbangan duit raya kepada
+                    anak-anak
+                    angkat Cikgu Saarani yang merupakan para pelajar sekolah di sekitar Negeri Perak pada Majlis Berbuka
+                    Puasa
+                    Pejabat Menteri Besar dan Yayasan Bina Upaya Darul Ridzuan di sini hari ini.....</p>
+                <a class="read-more" href="#">Read More</a>
+            </div>
+        </div>
+
+        <div class="post">
+            <img src="post3.jpeg" alt="Story 3">
+            <div class="post-content">
+                <h2>Lebih 3,000 Peserta Sertai Acara Larian Amal Meow Autism 2025</h2>
+                <p>ebih 3,000 peserta telah menyertai acara larian amal Meow Autism Run 2025 di Perkarangan Majlis
+                    Bandaraya
+                    Seberang Perai (MBSP) pagi kelmarin.
+
+                    Meow Autism Run 2025 anjuran Pertubuhan Autistik Pulau Pinang (KAA) merupakan edisi ke-8 dan acara
+                    tersebut
+                    telah berjaya mendapat sambutan hangat......</p>
+                <a class="read-more" href="#">Read More</a>
+            </div>
+        </div>
+
+        <div class="post">
+            <img src="post4.jpg" alt="Story 4">
+            <div class="post-content">
+                <h2></h2>HARI KANAK-KANAK SEDUNIA 2024: PUPUK POTENSI DAN INSPIRASI GENERASI KANAK-KANAK</h2>
+                <p>Tema Hari Kanak-Kanak Sedunia 2024, ‘Listen to the Future’ yang diangkat oleh UNICEF, menekankan
+                    pentingnya
+                    mendengar suara generasi muda dalam membentuk masa depan yang lebih baik. Di Malaysia, sambutan ini
+                    mendapat
+                    sokongan penuh daripada pelbagai pihak, termasuk institusi pendidikan seperti Pusat Penyelidikan
+                    Perkembangan
+                    Kanak-kanak Negara (NCDRC), UPSI.....</p>
+                <a class="read-more" href="#">Read More</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 Rumah Kasih Jannah | All Rights Reserved</p>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>

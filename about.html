@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Campaign Page for Rumah Kasih Jannah">
+    <title>ABOUT US</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="validation.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #3546a5;
+        }
+
+        .header {
+            background-color: #3546a5;
+            padding: 20px;
+            text-align: left;
+        }
+
+        .banner {
+            background-color: #3546a5;
+            padding: 50px 30px;
+            position: relative;
+        }
+
+        .banner h2 {
+            font-size: 20px;
+            font-weight: bold;
+            color: white;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            text-align: center;
+        }
+
+        .vision-mission {
+            display: flex;
+            justify-content: space-around;
+            width: 90%;
+            margin-bottom: 10px;
+            margin-top: 80px;
+        }
+
+        .vision-mission div {
+            background-color: lightgray;
+            padding: 20px;
+            width: 260px;
+            text-align: center;
+            opacity: 0.8;
+            /* Initial semi-transparency */
+            transition: opacity 0.3s ease-in-out;
+            /* Smooth transition for hover effect */
+        }
+
+        .vision-mission div:hover {
+            opacity: 1;
+            /* Fully opaque on hover */
+            cursor: pointer;
+            /* Indicate interactivity */
+        }
+
+        .content-box {
+            background-color: lightgray;
+            padding: 20px 20px 20px 20px;
+            margin: 20px 700px 20px 700px;
+            text-align: center;
+            font-family: 24px;
+            font-size: bold;
+            transform: scale(0.95);
+            /* Initial slight reduction in size */
+            transition: transform 0.3s ease-in-out;
+            /* Smooth transition for hover effect */
+        }
+
+        .content-box:hover {
+            transform: scale(1);
+            /* Return to original size on hover */
+            cursor: pointer;
+            /* Indicate interactivity */
+        }
+
+        .p {
+            text-align: center;
+            font-size: 1.2em;
+            /* Slightly larger font for emphasis */
+            color: white;
+            /* A softer color */
+        }
+
+        /* Banner Section */
+        .banner-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('about-banner.jpg') center/cover no-repeat;
+            /* Replace with your about us image */
+            color: white;
+            text-align: center;
+            padding: 150px 20px;
+        }
+
+        .banner-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .banner-content h1 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .banner-content p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        /* Values Section */
+        .values-section {
+            padding: 60px 20px;
+            background-color: #fff;
+            text-align: center;
+        }
+
+        .values-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .values-section h2 {
+            color: #3546a5;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+        }
+
+        .values-list {
+            list-style: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+        }
+
+        .values-list li {
+            background-color: #f0f8ff;
+            /* Alice Blue */
+            color: #333;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            font-weight: bold;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .values-list li:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .values-list li i {
+            margin-right: 10px;
+            color: #3546a5;
+        }
+
+        /* Footer (Consistent with campaigns.html) */
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .social-icons a {
+            color: white;
+            font-size: 1.5em;
+            margin: 0 10px;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: #fdd835;
+        }
+
+        /* Animations (Consistent with campaigns.html) */
+        .animate__animated.animate__fadeIn {
+            --animate-duration: 1s;
+        }
+
+        .animate__animated.animate__fadeInLeft {
+            --animate-duration: 1s;
+        }
+
+        .animate__animated.animate__fadeInRight {
+            --animate-duration: 1s;
+        }
+
+        .animate__animated.animate__fadeInUp {
+            --animate-duration: 1s;
+        }
+
+        .animate__animated.animate__slideInLeft {
+            --animate-duration: 1s;
+        }
+
+        .animate__animated.animate__slideInUp {
+            --animate-duration: 1s;
+        }
+
+        .animate__animated.animate__slideInRight {
+            --animate-duration: 1s;
+        }
+
+        .animate__animated.animate__pulse {
+            --animate-duration: 1s;
+        }
+
+        .animate__animated.animate__shakeX {
+            --animate-duration: 0.8s;
+        }
+
+        /* Dropdown Menu Styles (Keep these as they are) */
+        .dropdown-nav {
+            background-color: #82e0aa;
+            padding: 10px 20px;
+            text-align: left;
+            position: absolute;
+            /* To position it at the top */
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            /* Ensure it's above other elements */
+        }
+
+        .menu-toggle {
+            background: none;
+            border: none;
+            color: #333;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            display: none;
+            /* Hidden by default on larger screens */
+        }
+
+        .menu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+
+        .menu li {
+            margin-right: 20px;
+        }
+
+        .menu li:last-child {
+            margin-right: 0;
+        }
+
+        .menu a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .dropdown {
+            position: relative;
+        }
+
+        .dropbtn {
+            background: none;
+            border: none;
+            color: #333;
+            padding: 0;
+            cursor: pointer;
+            font-size: inherit;
+            font-weight: bold;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #00695c;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #ddd;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+
+        /* Media query for smaller screens (adjust as needed) */
+        @media (max-width: 768px) {
+            .menu {
+                display: none;
+                flex-direction: column;
+                background-color: #82e0aa;
+                width: 100%;
+                position: absolute;
+                top: 50px;
+                /* Adjust based on header height */
+                left: 0;
+                box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            }
+
+            .menu.active {
+                display: flex;
+            }
+
+            .menu li {
+                margin-right: 0;
+                padding: 10px 20px;
+                border-bottom: 1px solid #ddd;
+            }
+
+            .menu li:last-child {
+                border-bottom: none;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .dropdown-content {
+                position: static;
+                box-shadow: none;
+                width: 100%;
+            }
+
+            .dropdown-content a {
+                padding-left: 30px;
+            }
+        }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const visionMissionDivs = document.querySelectorAll('.vision-mission div');
+            visionMissionDivs.forEach(div => {
+                div.addEventListener('mouseenter', function () {
+                    this.style.boxShadow = '5px 5px 10px rgba(0, 0, 0, 0.3)';
+                });
+                div.addEventListener('mouseleave', function () {
+                    this.style.boxShadow = 'none';
+                });
+            });
+
+            const contentBox = document.querySelector('.content-box');
+            if (contentBox) {
+                contentBox.addEventListener('mouseenter', function () {
+                    this.style.transform = 'scale(1.02)';
+                    this.style.boxShadow = '5px 5px 15px rgba(0, 0, 0, 0.4)';
+                });
+                contentBox.addEventListener('mouseleave', function () {
+                    this.style.transform = 'scale(0.95)';
+                    this.style.boxShadow = 'none';
+                });
+            }
+
+            const meetOurTeamParagraph = document.querySelector('.p');
+            if (meetOurTeamParagraph) {
+                meetOurTeamParagraph.addEventListener('click', function () {
+                    alert('More information about our amazing team will be added soon!');
+                });
+                meetOurTeamParagraph.style.cursor = 'pointer'; // Indicate it's clickable
+            }
+        });
+    </script>
+</head>
+
+<body>
+
+    <!--Dropdown Menu-->
+    <nav class="dropdown-nav">
+        <button class="menu-toggle" aria-expanded="false" aria-controls="menu">☰ Menu</button>
+        <ul id="menu" class="menu hidden">
+            <li><a href="about.html"><i class="fas fa-info-circle"></i> ABOUT US</a></li>
+            <li><a href="campaigns.html"><i class="fas fa-bullhorn"></i> CAMPAIGNS</a></li>
+            <li><a href="get involved.html"><i class="fas fa-hands-helping"></i> GET INVOLVED</a></li>
+            <li><a href="contact.html"><i class="fas fa-envelope"></i> CONTACT US</a></li>
+            <li><a href="home.html"><i class="fas fa-home"></i> HOME</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-plus-circle"></i> MORE</a>
+                <div class="dropdown-content">
+                    <a href="counselling.html"><i class="fas fa-user-plus"></i> Counselling</a>
+                    <a href="blog1.html"><i class="fas fa-newspaper"></i> Blog</a>
+                </div>
+            </li>
+        </ul>
+    </nav>
+
+    <section class="banner-section">
+        <div class="banner-content animate__animated animate__fadeInDown">
+            <h1>About Rumah Kasih Jannah</h1>
+            <p>Learn more about our vision, mission, and the dedicated team behind our efforts.</p>
+        </div>
+    </section>
+
+    <div class="header">
+        <div class="vision-mission">
+            <div><i class="fas fa-eye"></i><b>OUR VISION</b>
+                <p>To create a nurturing and supportive environment where orphaned children and rescued babies receive
+                    the
+                    care, love,
+                    and opportunities they need to grow, thrive, and lead fulfilling lives.
+                </p>
+            </div>
+            <div><i class="fas fa-bullseye"></i><b>OUR MISSION</b>
+                <p>Is to provide essential support, shelter, and education to orphaned children and rescued babies in
+                    Malaysia.
+                    We are committed to offfering them a safe and loving and loving environment, empowering them
+                    with the resources and guidance to build a brighter future.
+                    Through community engagement, advocacy, and partnerhips, we aim to improve the well-being of the
+                    most
+                    vulnerable
+                    members of society.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="banner h2">
+        <h2>ABOUT US</h2>
+    </div>
+    </div>
+
+    <div class="p">
+        <p>MEET OUR TEAM</p>
+    </div>
+    <div class="content-box">FILE OF COMPANY TEAM</div>
+    </div>
+    </div>
+
+    <section class="values-section">
+        <div class="container values-container">
+            <h2 class="animate__animated animate__fadeIn">Our Core Values</h2>
+            <ul class="values-list">
+                <li class="animate__animated animate__fadeInUp" style="--animate-delay: 0.1s;"><i
+                        class="fas fa-heart"></i> Compassion</li>
+                <li class="animate__animated animate__fadeInUp" style="--animate-delay: 0.2s;"><i
+                        class="fas fa-hand-holding-heart"></i> Care</li>
+                <li class="animate__animated animate__fadeInUp" style="--animate-delay: 0.3s;"><i
+                        class="fas fa-graduation-cap"></i> Empowerment</li>
+                <li class="animate__animated animate__fadeInUp" style="--animate-delay: 0.4s;"><i
+                        class="fas fa-shield-alt"></i> Safety</li>
+                <li class="animate__animated animate__fadeInUp" style="--animate-delay: 0.5s;"><i
+                        class="fas fa-users"></i> Community</li>
+            </ul>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 Rumah Kasih Jannah | All Rights Reserved</p>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta description="Campaign Page for Rumah Kasih Jannah">
+    <title>CAMPAIGNS</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="validation.js"></script>
+
+    <style>
+        body {
+            background-color: #3546a5;
+            color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+
+        h2 {
+            text-align: center;
+            font-size: 60px;
+            color: pink;
+            font-family: 'Brush Script MT', cursive;
+            opacity: 0.9;
+            /* Slightly transparent initially */
+            transition: opacity 0.5s ease-in-out;
+            /* Smooth fade-in effect */
+        }
+
+        h2.loaded {
+            opacity: 1;
+            /* Fully visible after loading */
+        }
+
+        .image-row {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        /*Class Selector*/
+        .right {
+            float: right;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .campaign {
+            display: flex;
+            align-items: center;
+            width: 80%;
+            margin: 20px 0;
+            border-radius: 8px;
+            /* Add some rounded corners */
+            overflow: hidden;
+            /* Clip any content that goes out of the rounded corners */
+            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+            /* Subtle shadow */
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            /* Smooth hover effects */
+        }
+
+        .campaign:hover {
+            transform: scale(1.04);
+            /* Slightly scale up on hover */
+            box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.4);
+            /* More prominent shadow on hover */
+        }
+
+        .campaign img {
+            width: 200px;
+            height: 150px;
+            transition: filter 0.3s ease-in-out;
+            /* Smooth image hover effect */
+        }
+
+        .campaign img:hover {
+            filter: brightness(110%);
+            /* Slightly brighten image on hover */
+        }
+
+        .quote {
+            background-color: white;
+            color: black;
+            padding: 15px;
+            /* Increased padding */
+            flex-grow: 1;
+            text-align: center;
+            font-weight: bold;
+            margin: 0 10px;
+            border-radius: 5px;
+            /* Rounded corners for quote box */
+            opacity: 0.9;
+            /* Slightly transparent initially */
+            transition: opacity 0.3s ease-in-out;
+            /* Smooth hover effect */
+            cursor: pointer;
+            /* Indicate it's clickable */
+        }
+
+        .quote:hover {
+            opacity: 1;
+            /* Fully opaque on hover */
+        }
+
+        .reverse {
+            flex-direction: row-reverse;
+        }
+
+        .reverse .campaign-details {
+            text-align: right;
+        }
+
+
+        .logo {
+            padding-left: 10px;
+        }
+
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('hero-image.jpg') center/cover no-repeat;
+            /* Replace with your image */
+            color: white;
+            text-align: center;
+            padding: 100px 20px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+            opacity: 0.8;
+        }
+
+        .button {
+            display: inline-block;
+            background-color: #fdd835;
+            color: #333;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #e6c330;
+        }
+
+        /* Campaigns Section */
+        .campaigns-section {
+            padding: 40px 20px;
+            text-align: center;
+            background-color: #fff;
+            /* White section background */
+            color: #333;
+        }
+
+        .campaigns-section h2 {
+            font-size: 2.5em;
+            color: #3546a5;
+            margin-bottom: 30px;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .campaign {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            margin: 30px 0;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: white;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .campaign:hover {
+            transform: scale(1.02);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .campaign-image {
+            flex: 0 0 300px;
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .campaign-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease-in-out;
+        }
+
+        .campaign:hover .campaign-image img {
+            transform: scale(1.05);
+        }
+
+        .campaign-details {
+            padding: 20px;
+            flex-grow: 1;
+            text-align: left;
+        }
+
+        .campaign-details h3 {
+            color: #3546a5;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        .campaign-details .quote-text {
+            font-style: italic;
+            color: #666;
+            margin-bottom: 15px;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .campaign-details .quote-text:hover {
+            color: #3546a5;
+        }
+
+        .learn-more {
+            background-color: #fdd835;
+            text-decoration: none;
+            color: #333;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .learn-more i {
+            margin-left: 5px;
+        }
+
+        .learn-more:hover {
+            background-color: #e6c330;
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .social-icons a {
+            color: white;
+            font-size: 1.5em;
+            margin: 0 10px;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: #fdd835;
+        }
+
+        /* Animations */
+        .animate__animated.animate__fadeIn {
+            --animate-duration: 1s;
+        }
+
+        .animate__animated.animate__fadeInLeft {
+            --animate-duration: 1s;
+        }
+
+        /* Dropdown Menu Styles (Keep these as they are) */
+        .dropdown-nav {
+            background-color: #82e0aa;
+            padding: 10px 20px;
+            text-align: left;
+            position: absolute;
+            /* To position it at the top */
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            /* Ensure it's above other elements */
+        }
+
+        .menu-toggle {
+            background: none;
+            border: none;
+            color: #333;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            display: none;
+            /* Hidden by default on larger screens */
+        }
+
+        .menu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+
+        .menu li {
+            margin-right: 20px;
+        }
+
+        .menu li:last-child {
+            margin-right: 0;
+        }
+
+        .menu a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .dropdown {
+            position: relative;
+        }
+
+        .dropbtn {
+            background: none;
+            border: none;
+            color: #333;
+            padding: 0;
+            cursor: pointer;
+            font-size: inherit;
+            font-weight: bold;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #00695c;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #ddd;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+
+        /* Media query for smaller screens (adjust as needed) */
+        @media (max-width: 768px) {
+            .menu {
+                display: none;
+                flex-direction: column;
+                background-color: #82e0aa;
+                width: 100%;
+                position: absolute;
+                top: 50px;
+                /* Adjust based on header height */
+                left: 0;
+                box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            }
+
+            .menu.active {
+                display: flex;
+            }
+
+            .menu li {
+                margin-right: 0;
+                padding: 10px 20px;
+                border-bottom: 1px solid #ddd;
+            }
+
+            .menu li:last-child {
+                border-bottom: none;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .dropdown-content {
+                position: static;
+                box-shadow: none;
+                width: 100%;
+            }
+
+            .dropdown-content a {
+                padding-left: 30px;
+            }
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const heading = document.querySelector('h2');
+            if (heading) {
+                setTimeout(() => {
+                    heading.classList.add('loaded');
+                }, 500); // Add 'loaded' class after 0.5 seconds
+            }
+
+            const campaigns = document.querySelectorAll('.campaign');
+            campaigns.forEach(campaign => {
+                campaign.addEventListener('mouseenter', function () {
+                    this.style.transform = 'scale(1.04)';
+                    this.style.boxShadow = '5px 5px 20px rgba(0, 0, 0, 0.4)';
+                });
+                campaign.addEventListener('mouseleave', function () {
+                    this.style.transform = 'scale(1.02)';
+                    this.style.boxShadow = '3px 3px 10px rgba(0, 0, 0, 0.2)';
+                });
+            });
+
+            const quotes = document.querySelectorAll('.quote');
+            quotes.forEach((quote, index) => {
+                quote.addEventListener('click', function () {
+                    alert(`You clicked on campaign quote ${index + 1}: "${this.textContent.trim()}"`);
+                });
+            });
+        });
+    </script>
+</head>
+
+<body>
+
+    <body>
+
+        <!--Dropdown Menu-->
+        <nav class="dropdown-nav">
+            <button class="menu-toggle" aria-expanded="false" aria-controls="menu">☰ Menu</button>
+            <ul id="menu" class="menu hidden">
+                <li><a href="about.html"><i class="fas fa-info-circle"></i> ABOUT US</a></li>
+                <li><a href="campaigns.html"><i class="fas fa-bullhorn"></i> CAMPAIGNS</a></li>
+                <li><a href="get involved.html"><i class="fas fa-hands-helping"></i> GET INVOLVED</a></li>
+                <li><a href="contact.html"><i class="fas fa-envelope"></i> CONTACT US</a></li>
+                <li><a href="home.html"><i class="fas fa-home"></i> HOME</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropbtn"><i class="fas fa-plus-circle"></i> MORE</a>
+                    <div class="dropdown-content">
+                        <a href="counselling.html"><i class="fas fa-user-plus"></i> Counselling</a>
+                        <a href="blog1.html"><i class="fas fa-newspaper"></i> Blog</a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+
+        <br>
+        <br>
+        <h2 class="loaded">CAMPAIGNS</h2>
+
+        <section class="hero">
+            <div class="hero-content animate__animated animate__fadeInDown">
+                <h1>Making a Difference, One Campaign at a Time</h1>
+                <p>Discover our impactful initiatives and how you can be a part of them.</p>
+                <a href="get involved.html" class="button">Get Involved Today</a>
+            </div>
+        </section>
+
+        <section class="campaigns-section">
+            <h2 class="animate__animated animate__fadeIn">OUR LATEST CAMPAIGNS</h2>
+            <div class="container">
+                <div class="campaign animate__animated animate__fadeInLeft">
+                    <div class="campaign-image">
+                        <img src="charity1.jpg" alt="Duit Raya Celebration">
+                    </div>
+                    <div class="campaign-details">
+                        <h3>Eid Celebration with Penang State Government</h3>
+                        <p class="quote-text">The children at Rumah Kasih Jannah received Duit Raya and celebrated the
+                            Hari
+                            Raya Aidilfitri festivities with the Penang State Government.</p>
+                        <a href="blog1.html" class="learn-more">Learn More</a><i class="fas fa-arrow-right"></i>
+                    </div>
+                </div>
+
+                <div class="campaign reverse animate__animated animate__fadeInRight">
+                    <div class="campaign-image">
+                        <img src="charity2.jpg" alt="Baby Hatch Success">
+                    </div>
+                    <div class="campaign-details">
+                        <h3>Saving Lives Through Our Baby Hatch</h3>
+                        <p class="quote-text">The baby hatch at Rumah Kasih Jannah has saved at least 20 babies in 2024.
+                        </p>
+                        <a href="blog1.html" class="learn-more">Learn More</a><i class="fas fa-arrow-right"></i>
+                    </div>
+                </div>
+
+                <div class="campaign animate__animated animate__fadeInLeft">
+                    <div class="campaign-image">
+                        <img src="charity3.jpg" alt="Cooking and Baking Activities">
+                    </div>
+                    <div class="campaign-details">
+                        <h3>Annual Cooking and Baking Fun</h3>
+                        <p class="quote-text">Cooking and baking activities at Rumah Kasih Jannah are annual events for
+                            the
+                            children here, and many bakers around Penang are interested in collaborating with us.</p>
+                        <a href="blog1.html" class="learn-more">Learn More</a><i class="fas fa-arrow-right"></i>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <div class="footer-content">
+                <p>&copy; 2025 Rumah Kasih Jannah | All Rights Reserved</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </footer>
+    </body>
+
+</html>

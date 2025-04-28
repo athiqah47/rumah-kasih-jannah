@@ -1,0 +1,307 @@
+nav.horizontal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 10px 0;
+  text-align: center;
+  /* Pusatkan teks di dalam nav */
+}
+
+nav.horizontal ul {
+  list-style: none;
+  display: flex;
+  background: transparent;
+  padding: 0;
+  justify-content: center;
+  /* Pusatkan item-item ul secara mendatar */
+  margin: 0;
+}
+
+nav.horizontal ul li {
+  padding: 15px 20px;
+}
+
+nav.horizontal ul li a {
+  color: black;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+nav.horizontal ul li:hover {
+  background: greenyellow;
+}
+
+/*Form validation*/
+#donation {
+  background-color: white;
+  padding: 40px;
+  margin: 50px;
+  border-radius: 15px;
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+#donation form {
+  max-width: 500px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+#donation label {
+  margin-top: 10px;
+}
+
+#donation input,
+#donation select {
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+#donation button {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #00a389;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#donation button:hover {
+  background-color: #007e6a;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+/* Footer (Consistent with campaigns.html) */
+footer {
+  background-color: #333;
+  color: white;
+  padding: 30px 20px;
+  text-align: center;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.social-icons a {
+  color: white;
+  font-size: 1.5em;
+  margin: 0 10px;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: #fdd835;
+}
+
+/*dropdown more*/
+.dropdown-nav {
+  background-color: #82e0aa;
+  padding: 0.5em;
+  text-align: center;
+  padding: 0px 0;
+}
+
+.menu-toggle {
+  background: #82e0aa;
+  color: white;
+  border: none;
+  padding: 0.75em 1em;
+  font-size: 1.2em;
+  cursor: pointer;
+}
+
+.menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: none;
+  background-color: #82e0aa;
+}
+
+.menu li a {
+  display: block;
+  padding: 1em;
+  color: white;
+  text-decoration: none;
+}
+
+.menu li a:hover {
+  background-color: #555;
+}
+
+.menu.show {
+  display: block;
+}
+
+/*Show menu horizontally*/
+@media (min-width: 768px) {
+  .menu {
+    display: flex !important;
+    gap: 20px;
+  }
+
+  .menu li {
+    margin: 0;
+  }
+
+  .menu-toggle {
+    display: none;
+  }
+}
+
+nav {
+  background-color: #16a085;
+  padding: 10px 0;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+}
+
+nav ul li {
+  margin: 0 15px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+}
+
+.navbar {
+  background: blue;
+  overflow: hidden;
+}
+
+.navbar .nav-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.navbar .nav-list li {
+  position: relative;
+}
+
+.navbar .nav-list li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.navbar .nav-list .dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  background-color: #444;
+  min-width: 160px;
+  z-index: 1;
+}
+
+.dropdown-menu li a {
+  padding: 12px 16px;
+  display: block;
+}
+
+.menu-toggle {
+  display: none;
+  color: white;
+  padding: 14px 16px;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 1200px) {
+  .navbar .nav-list {
+    display: none;
+    flex-direction: column;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+}
+
+nav {
+  background-color: #16a085;
+  padding: 10px 0;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+}
+
+nav ul li {
+  margin: 0 15px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+}
+
+nav {
+  background-color: #82E0AA;
+}
+
+.nav-menu {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  flex-wrap: wrap;
+}
+
+.nav-menu li {
+  position: relative;
+}
+
+.nav-menu a {
+  display: block;
+  padding: 14px 20px;
+  color: white;
+  text-decoration: none;
+}
+
+.nav-menu li:hover {
+  background-color: #00796b;
+}
+
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #00695c;
+  min-width: 160px;
+  z-index: 1;
+  list-style: none;
+}
+
+.dropdown-content li a {
+  padding: 12px 16px;
+  color: white;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}

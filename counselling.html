@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>COUNSELLING</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <script src="validation.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #fffdf7;
+      color: #333;
+    }
+
+    header {
+      background: pink;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo img {
+      height: 50px;
+    }
+
+    nav a {
+      margin-left: 20px;
+      color: #333;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    .title-section {
+      text-align: center;
+      padding: 80px 20px 40px;
+    }
+
+    .title-section h1 {
+      font-size: 80px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .title-section p {
+      font-size: 20px;
+      color: #666;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .content-section {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      padding: 40px 20px;
+      gap: 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .content-section img {
+      flex: 1;
+      max-width: 500px;
+      border-radius: 10px;
+      width: 100%;
+    }
+
+    .content-text {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .content-text h2 {
+      font-size: 32px;
+      margin-bottom: 20px;
+    }
+
+    .content-text p {
+      font-size: 18px;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .cta-button {
+      display: inline-block;
+      background-color: black;
+      color: white;
+      padding: 12px 24px;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 5px;
+      transform: scale(0.95);
+      transition: transform 0.3s ease-in-out;
+      text-decoration: none;
+    }
+
+    .cta-button:hover {
+      background-color: #e0a530;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!--Dropdown Menu-->
+  <nav class="dropdown-nav">
+    <button class="menu-toggle" aria-expanded="false" aria-controls="menu">☰ Menu</button>
+    <ul id="menu" class="menu hidden">
+      <li><a href="about.html"><i class="fas fa-info-circle"></i> ABOUT US</a></li>
+      <li><a href="campaigns.html"><i class="fas fa-bullhorn"></i> CAMPAIGNS</a></li>
+      <li><a href="get involved.html"><i class="fas fa-hands-helping"></i> GET INVOLVED</a></li>
+      <li><a href="contact.html"><i class="fas fa-envelope"></i> CONTACT US</a></li>
+      <li><a href="home.html"><i class="fas fa-home"></i> HOME</a></li>
+      <li class="dropdown">
+        <a href="#" class="dropbtn"><i class="fas fa-plus-circle"></i> MORE</a>
+        <div class="dropdown-content">
+          <a href="counselling.html"><i class="fas fa-user-plus"></i> Counselling</a>
+          <a href="blog1.html"><i class="fas fa-newspaper"></i> Blog</a>
+        </div>
+      </li>
+    </ul>
+  </nav>
+
+  <header>
+    <div class="logo">
+      <a href="#"><img src="logo.jpg" alt="Logo" /></a>
+    </div>
+
+  </header>
+
+  <section class="title-section">
+    <h1>COUNSELLING</h1>
+    <p>We offer professional, compassionate counselling to guide you through difficult times and empower your choices.
+    </p>
+  </section>
+
+  <section class="content-section">
+    <img src="meeting.png" alt="Counselling Session" />
+    <div class="content-text">
+      <h2>How We Help</h2>
+      <p>
+        Our trained counsellors provide a safe, confidential space to explore your thoughts and feelings. Whether you're
+        navigating unplanned pregnancy, adoption, or emotional distress, we're here to support you without judgment.
+      </p>
+      <p>
+        We believe everyone deserves someone to listen. Let us walk alongside you on your journey.
+      </p>
+      <a href="contact.html" class="cta-button">Book a Session</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-content">
+      <p>&copy; 2025 Rumah Kasih Jannah | All Rights Reserved</p>
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>

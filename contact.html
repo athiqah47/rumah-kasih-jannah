@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta description="Campaign Page for Rumah Kasih Jannah">
+    <title>CONTACT US</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="validation.js"></script>
+    <style>
+        /* Basic body styling to center content */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom, #f7d1e0 50%, #ffffff 50%);
+            display: flex;
+            justify-content: center;
+            /* Center horizontally */
+            align-items: center;
+            /* Center vertically */
+            min-height: 100vh;
+            /* Ensure full viewport height */
+            text-align: center;
+            /* Center text within the body */
+        }
+
+        .header {
+            /* Removed position: relative as it's not needed for centering the container */
+            padding: 50px 30px;
+            /* background: none; Removed background from header as it's applied to body */
+            width: 100%;
+            /* Make header take full width to allow container centering */
+            display: flex;
+            justify-content: center;
+            /* Center the container within the header */
+        }
+
+        .container {
+            width: 100%;
+            max-width: 500px;
+            background: white;
+            padding: 20px 25px 20px 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: left;
+            /* Align text within the container to the left */
+        }
+
+
+        h1 {
+            color: #333;
+            font-size: 24px;
+            text-align: center;
+            /* Center the heading */
+        }
+
+        .contact-form h2 {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        .contact-form p {
+            font-size: 14px;
+            color: #555;
+            text-align: center;
+            /* Center the paragraph */
+            margin-bottom: 20px;
+            /* Add some space below the paragraph */
+        }
+
+        form#contactForm {
+            /* Added ID to the form */
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            font-size: 14px;
+            margin: 10px 0 5px;
+            text-align: left;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 10px 4px 10px 4px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+            box-sizing: border-box;
+            /* Ensure padding and border are included in the element's total width and height */
+        }
+
+        textarea {
+            height: 80px;
+            resize: none;
+        }
+
+        .terms {
+            display: flex;
+            align-items: center;
+            font-size: 12px;
+            margin-top: 10px;
+        }
+
+        .terms input {
+            margin-right: 5px;
+        }
+
+        .terms a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+
+        button {
+            background: black;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 14px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background: #333;
+        }
+
+        /* Dropdown Menu Styles (Keep these as they are) */
+        .dropdown-nav {
+            background-color: #82e0aa;
+            padding: 10px 20px;
+            text-align: left;
+            position: absolute;
+            /* To position it at the top */
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            /* Ensure it's above other elements */
+        }
+
+        .menu-toggle {
+            background: none;
+            border: none;
+            color: #333;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            display: none;
+            /* Hidden by default on larger screens */
+        }
+
+        .menu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+
+        .menu li {
+            margin-right: 20px;
+        }
+
+        .menu li:last-child {
+            margin-right: 0;
+        }
+
+        .menu a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .dropdown {
+            position: relative;
+        }
+
+        .dropbtn {
+            background: none;
+            border: none;
+            color: #333;
+            padding: 0;
+            cursor: pointer;
+            font-size: inherit;
+            font-weight: bold;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #00695c;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #ddd;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        /* Footer Styles (Keep these as they are) */
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            position: fixed;
+            /* Stick to the bottom */
+            bottom: 0;
+            width: 100%;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .social-icons a {
+            color: white;
+            margin: 0 10px;
+            font-size: 20px;
+            text-decoration: none;
+        }
+
+        /* Media query for smaller screens (adjust as needed) */
+        @media (max-width: 768px) {
+            .menu {
+                display: none;
+                flex-direction: column;
+                background-color: #82e0aa;
+                width: 100%;
+                position: absolute;
+                top: 50px;
+                /* Adjust based on header height */
+                left: 0;
+                box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            }
+
+            .menu.active {
+                display: flex;
+            }
+
+            .menu li {
+                margin-right: 0;
+                padding: 10px 20px;
+                border-bottom: 1px solid #ddd;
+            }
+
+            .menu li:last-child {
+                border-bottom: none;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .dropdown-content {
+                position: static;
+                box-shadow: none;
+                width: 100%;
+            }
+
+            .dropdown-content a {
+                padding-left: 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="dropdown-nav">
+        <button class="menu-toggle" aria-expanded="false" aria-controls="menu">☰ Menu</button>
+        <ul id="menu" class="menu hidden">
+            <li><a href="about.html"><i class="fas fa-info-circle"></i> ABOUT US</a></li>
+            <li><a href="campaigns.html"><i class="fas fa-bullhorn"></i> CAMPAIGNS</a></li>
+            <li><a href="get involved.html"><i class="fas fa-hands-helping"></i> GET INVOLVED</a></li>
+            <li><a href="contact.html"><i class="fas fa-envelope"></i> CONTACT US</a></li>
+            <li><a href="home.html"><i class="fas fa-home"></i> HOME</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-plus-circle"></i> MORE</a>
+                <div class="dropdown-content">
+                    <a href="counselling.html"><i class="fas fa-user-plus"></i> Counselling</a>
+                    <a href="blog1.html"><i class="fas fa-newspaper"></i> Blog</a>
+                </div>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="header">
+        <div class="container">
+            <h1>Hey There !!!</h1>
+            <div class="contact-form">
+                <p>Every child deserves a chance to grow and thrive.</p>
+
+                <form id="contactForm">
+                    <div>
+                        <label for="full-name">Full Name</label>
+                        <input type="text" id="full-name" name="full-name" placeholder="Enter your full name"
+                            onblur="this.value = this.value.toUpperCase();" required>
+                    </div>
+                    <div>
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                    </div>
+                    <div>
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject" placeholder="Enter subject" required>
+                    </div>
+                    <div>
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" placeholder="Write your message" required></textarea>
+                    </div>
+                    <div class="terms">
+                        <input type="checkbox" id="terms" name="terms" required>
+                        <label for="terms">I accept the terms <a href="#">Read our T&Cs</a></label>
+                    </div>
+                    <button type="submit">SUBMIT</button>
+                    <div id="contactStatus"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- Contact Form ---
+        const contactForm = document.getElementById('contactForm');
+        const contactNameInput = document.getElementById('full-name');
+        const contactEmailInput = document.getElementById('email');
+        const contactSubjectInput = document.getElementById('subject');
+        const contactMessageInput = document.getElementById('message');
+        const contactStatus = document.getElementById('contactStatus');
+
+        contactForm.addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevent default form submission
+
+            let isValid = true;
+            const errors = {}; // Object to store error messages
+            let errorMessage = "Please correct the following errors:\n"; // Initialize error message
+
+            // Validate Full Name
+            const nameRegex = /^[a-zA-Z\s]+$/;
+            if (!nameRegex.test(contactNameInput.value.trim())) {
+                errors['full-name'] = "Full Name must only contain letters and spaces.";
+                isValid = false;
+                errorMessage += "- " + errors['full-name'] + "\n";
+            }
+            // Validate Email Address
+            const emailValue = contactEmailInput.value.trim();
+            const hasAt = emailValue.includes('@');
+            const hasDot = emailValue.includes('.');
+            if (emailValue === "") {
+                errors['email'] = "Please enter your email address.";
+                isValid = false;
+                errorMessage += "- " + errors['email'] + "\n";
+            } else if (!hasAt || !hasDot) {
+                errors['email'] = "Email address must contain at least '@' and '.' symbols.";
+                isValid = false;
+                errorMessage += "- " + errors['email'] + "\n";
+            }
+            // Validate Subject
+            if (contactSubjectInput.value.trim() === "") {
+                errors['subject'] = "Please enter a subject.";
+                isValid = false;
+                errorMessage += "- " + errors['subject'] + "\n";
+            }
+
+            // Validate Message
+            if (contactMessageInput.value.trim().length < 10) {
+                errors['message'] = "Message must be at least 10 characters long.";
+                isValid = false;
+                errorMessage += "- " + errors['message'] + "\n";
+            } else if (contactMessageInput.value.trim() === "") {
+                errors['message'] = "Please write your message.";
+                isValid = false;
+                errorMessage += "- " + errors['message'] + "\n";
+            }
+
+            // Validate Terms
+            const termsCheckbox = document.getElementById('terms');
+            if (!termsCheckbox.checked) {
+                errors['terms'] = "Please accept the terms and conditions.";
+                isValid = false;
+                errorMessage += "- " + errors['terms'] + "\n";
+            }
+
+            // Display errors or success message
+            if (!isValid) {
+                contactStatus.textContent = 'Please fix the errors in the form.';
+                alert(errorMessage); // Show detailed error messages in the alert
+            } else {
+                contactStatus.textContent = 'Sending message...';
+                setTimeout(function () {
+                    contactStatus.textContent = 'Message sent successfully!';
+                    contactForm.reset();
+                    alert("Your message has been submitted. Thank you!");
+                }, 1500);
+            }
+        });
+
+        // --- Mobile Menu Toggle ---
+        const menuToggle = document.querySelector('.menu-toggle');
+        const menu = document.getElementById('menu');
+
+        menuToggle.addEventListener('click', () => {
+            const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true' || false;
+            menuToggle.setAttribute('aria-expanded', !isExpanded);
+            menu.classList.toggle('active');
+        });
+    </script>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 Rumah Kasih Jannah | All Rights Reserved</p>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>

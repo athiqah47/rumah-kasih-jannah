@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta description="Campaign Page for Rumah Kasih Jannah">
+    <title>GET INVOLVED</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="validation.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .header {
+            background-color: cornsilk;
+            color: black;
+            padding: 20px;
+            text-align: center;
+            font-size: 20px;
+        }
+
+        h1 {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            font-size: 40px;
+            color: #2d2d6c;
+        }
+
+        .donation-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .donation-box {
+            background-color: white;
+            border-radius: 5px;
+            text-align: center;
+            padding: 15px;
+            width: 250px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .donation-box:hover {
+            transform: scale(1.05);
+        }
+
+        .donation-box img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .donation-box:hover img {
+            transform: scale(1.1);
+        }
+
+        .donation-amount {
+            background-color: cornsilk;
+            color: black;
+            padding: 10px;
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .donation-text {
+            font-size: 14px;
+            padding: 10px;
+        }
+
+        .table-container {
+            max-width: 1000px;
+            position: relative;
+            margin: auto;
+            border-width: 1px;
+        }
+
+        #donation {
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        #donation h2 {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            color: #2d2d6c;
+            font-size: 30px;
+            margin-bottom: 15px;
+        }
+
+        #donation p {
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+            display: block;
+            width: 300px;
+            /* Adjust width as needed */
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group input[type="number"],
+        .form-group select {
+            width: calc(100% - 12px);
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        #donation button[type="submit"] {
+            background-color: #5cb85c;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        #donation button[type="submit"]:hover {
+            background-color: #4cae4c;
+        }
+
+        .error-message {
+            color: red;
+            font-size: 0.9em;
+            margin-top: 5px;
+            display: block;
+            /* Ensure error messages are displayed */
+        }
+
+        /* Dropdown Menu Styles (Keep these as they are) */
+        .dropdown-nav {
+            background-color: #82e0aa;
+            padding: 10px 20px;
+            text-align: left;
+            position: absolute;
+            /* To position it at the top */
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            /* Ensure it's above other elements */
+        }
+
+        .menu-toggle {
+            background: none;
+            border: none;
+            color: #333;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            display: none;
+            /* Hidden by default on larger screens */
+        }
+
+        .menu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+
+        .menu li {
+            margin-right: 20px;
+        }
+
+        .menu li:last-child {
+            margin-right: 0;
+        }
+
+        .menu a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .dropdown {
+            position: relative;
+        }
+
+        .dropbtn {
+            background: none;
+            border: none;
+            color: #333;
+            padding: 0;
+            cursor: pointer;
+            font-size: inherit;
+            font-weight: bold;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #00695c;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #ddd;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+
+        /* Media query for smaller screens (adjust as needed) */
+        @media (max-width: 768px) {
+            .menu {
+                display: none;
+                flex-direction: column;
+                background-color: #82e0aa;
+                width: 100%;
+                position: absolute;
+                top: 50px;
+                /* Adjust based on header height */
+                left: 0;
+                box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            }
+
+            .menu.active {
+                display: flex;
+            }
+
+            .menu li {
+                margin-right: 0;
+                padding: 10px 20px;
+                border-bottom: 1px solid #ddd;
+            }
+
+            .menu li:last-child {
+                border-bottom: none;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .dropdown-content {
+                position: static;
+                box-shadow: none;
+                width: 100%;
+            }
+
+            .dropdown-content a {
+                padding-left: 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!--Dropdown Menu-->
+    <nav class="dropdown-nav">
+        <button class="menu-toggle" aria-expanded="false" aria-controls="menu">☰ Menu</button>
+        <ul id="menu" class="menu hidden">
+            <li><a href="about.html"><i class="fas fa-info-circle"></i> ABOUT US</a></li>
+            <li><a href="campaigns.html"><i class="fas fa-bullhorn"></i> CAMPAIGNS</a></li>
+            <li><a href="get involved.html"><i class="fas fa-hands-helping"></i> GET INVOLVED</a></li>
+            <li><a href="contact.html"><i class="fas fa-envelope"></i> CONTACT US</a></li>
+            <li><a href="home.html"><i class="fas fa-home"></i> HOME</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-plus-circle"></i> MORE</a>
+                <div class="dropdown-content">
+                    <a href="counselling.html"><i class="fas fa-user-plus"></i> Counselling</a>
+                    <a href="blog1.html"><i class="fas fa-newspaper"></i> Blog</a>
+                </div>
+            </li>
+        </ul>
+    </nav>
+
+
+
+
+    <div class="header">
+        <br>
+        <h1>GET INVOLVED</h1>
+        <p>If you feel passionately as we do that children deserve a happy childhood, join us</p>
+    </div>
+    <div class="donation-container">
+        <div class="donation-box volunteer-box">
+            <img src="volunteer.jpg" alt="Ghana's first women's shelter">
+            <div class="donation-amount">Volunteer with Us</div>
+            <div class="donation-text">
+                <ul>
+                    <li><b>Teaching & Tutoring</b> - Help children with their potential.</li>
+                    <li><b>Skill-Based Workshops</b> - Share valuable skills such as art, music, IT, or language
+                        lessons.</li>
+                    <li><b>Event Support</b> - Assist in organizing activities, celebrations, and fundraising events.
+                    </li>
+                    <li><b>Emotional Support & Mentorship</b> - Be a role model and guide for the children.</li>
+                </ul>
+                <button class="expand-button" data-target=".volunteer-box .donation-text ul">Learn More</button>
+            </div>
+        </div>
+        <div class="donation-box donate-box">
+            <img src="donate.png" alt="Build two toilets">
+            <div class="donation-amount">Donate & Give Hope</div>
+            <div class="donation-text">
+                <ul>
+                    <li><b>Monetory Donations</b> - Support our daily operations and children's needs.</li>
+                    <li><b>In-Kind Contributions</b> - Donate food supplies, school materials, clothes, and hygiene
+                        essentials.</li>
+                    <li><b>Sponsor a Child</b> - Sponsor a child's education and well-being for a brighter future.</li>
+                    <li><b>Become a Fundraiser</b> - Organize your own fundraising events to support our cause.</li>
+                </ul>
+                <button class="expand-button" data-target=".donate-box .donation-text ul">Learn More</button>
+            </div>
+        </div>
+        <div class="donation-box partner-box">
+            <img src="partner.png" alt="Provide Clean Water For Gaza">
+            <div class="donation-amount">Partner with Us</div>
+            <div class="donation-text">
+                <ul>
+                    <li><b>Corporate Social Responsibility (CSR) Programs</b> - Work with us on community-driven
+                        initiatives.</li>
+                    <li><b>Fundraising Collaborations</b> - Organize charity events or campaigns to support our home.
+                    </li>
+                    <li><b>Scholarship & Training Opportunities</b> - Help secure education and career paths for the
+                        children.</li>
+                    <li><b>Pro Bono Services</b> - Offer your professional services to support our operations.</li>
+                </ul>
+                <button class="expand-button" data-target=".partner-box .donation-text ul">Learn More</button>
+            </div>
+        </div>
+    </div>
+
+    <section id="donation">
+        <h2>MAKE A DONATION</h2>
+        <p>Your support helps us make a difference.</p>
+        <form id="donationForm">
+            <div class="form-group">
+                <label for="full-name">Full Name:</label>
+                <input type="text" id="full-name" name="full-name" onblur="this.value = this.value.toUpperCase();"
+                    required>
+                <div class="error-message" id="fullname-error"></div>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email">
+                <div class="error-message" id="email-error"></div>
+            </div>
+            <div class="form-group">
+                <label for="donation-amount">Donation Amount (RM):</label>
+                <input type="number" id="donation-amount" name="donation-amount" required>
+                <div class="error-message" id="amount-error"></div>
+            </div>
+            <div class="form-group">
+                <label for="payment-method">Payment Method:</label>
+                <select id="payment-method" name="payment-method">
+                    <option value="">-- Select --</option>
+                    <option value="credit-card">Credit Card</option>
+                    <option value="online-banking">Online Banking</option>
+                    <option value="e-wallet">E-Wallet</option>
+                </select>
+                <div class="error-message" id="payment-error"></div>
+            </div>
+            <button type="submit">Donate Now</button>
+            <div id="donation-status" style="margin-top: 10px;"></div>
+        </form>
+    </section>
+    <script>
+        $(document).ready(function () {
+            // Toggle extra information in donation boxes
+            $('.expand-button').click(function () {
+                var target = $(this).data('target');
+                $(target).slideToggle('fast');
+                if ($(this).text() === 'Learn More') {
+                    $(this).text('Show Less');
+                } else {
+                    $(this).text('Learn More');
+                }
+            })
+        });
+
+        // Basic form validation using plain JavaScript
+        document.getElementById('donationForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+            var isValid = true;
+            var errorMessages = document.querySelectorAll('.error-message');
+            errorMessages.forEach(function (element) {
+                element.textContent = ''; // Clear previous errors
+            });
+
+            var fullName = document.getElementById('full-name').value.trim();
+            var email = document.getElementById('email').value.trim();
+            var donationAmount = document.getElementById('donation-amount').value;
+            var paymentMethod = document.getElementById('payment-method').value;
+
+            var nameRegex = /^[a-zA-Z\s]+$/;
+            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            // a) Conditional Statements: Donation Eligibility Check
+            var minimumDonation = 10;
+            if (isNaN(donationAmount) || parseFloat(donationAmount) < minimumDonation) {
+                document.getElementById('amount-error').textContent = 'Minimum donation amount is RM' + minimumDonation + '.';
+                isValid = false;
+                alert('Donation amount is below the minimum limit of RM' + minimumDonation + '.'); // Alert for low donation
+            }
+
+            // c) Form Validation: Donation Form with Alert Messages
+            if (!nameRegex.test(fullName)) {
+                document.getElementById('fullname-error').textContent = 'Full Name must only contain letters and spaces.';
+                isValid = false;
+                alert('Please enter a valid Full Name (letters and spaces only).');
+            }
+
+            if (!email) {
+                document.getElementById('email-error').textContent = 'Please enter your email address.';
+                isValid = false;
+                alert('Please enter your email address.');
+            } else if (!emailRegex.test(email)) {
+                document.getElementById('email-error').textContent = 'Please enter a valid email address.';
+                isValid = false;
+                alert('Please enter a valid email address (e.g., user@example.com).');
+            }
+
+            if (isNaN(donationAmount) || donationAmount === '') {
+                document.getElementById('amount-error').textContent = 'Please enter a valid donation amount.';
+                isValid = false;
+                alert('Please enter a valid donation amount.');
+            } else if (parseFloat(donationAmount) < minimumDonation && !(isNaN(donationAmount) || parseFloat(donationAmount) < minimumDonation)) {
+                // The alert for below minimum is already shown above, so we avoid redundancy here.
+            }
+
+            if (paymentMethod === '') {
+                document.getElementById('payment-error').textContent = 'Please select a payment method.';
+                isValid = false;
+                alert('Please select a payment method.');
+            }
+
+            var donationStatus = document.getElementById('donation-status');
+            if (isValid) {
+                donationStatus.textContent = 'Processing donation...';
+                donationStatus.style.color = 'green';
+                // Simulate donation processing (replace with actual API call)
+                setTimeout(function () {
+                    donationStatus.textContent = 'Donation successful. Thank you!';
+                    donationStatus.style.color = 'green';
+                    document.getElementById('donationForm').reset(); // Clear the form
+                    // b) Alert Method: Donation Success
+                    alert('Thank you for your generous donation!');
+                }, 2000);
+            } else {
+                donationStatus.textContent = 'Please fix the errors in the form.';
+                donationStatus.style.color = 'red';
+            }
+        });
+        // Add a subtle animation to the header
+        $('.header').animate({
+            opacity: 0.8
+        }, 1000, function () {
+            $(this).animate({
+                opacity: 1
+            }, 500);
+        });
+
+        // Animate the donation boxes on hover (redundant with CSS, but for demonstration)
+        $('.donation-box').hover(
+            function () {
+                $(this).stop().animate({
+                    marginTop: '-5px'
+                }, 200);
+            },
+            function () {
+                $(this).stop().animate({
+                    marginTop: '0px'
+                }, 200);
+            }
+        );
+
+    </script>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 Rumah Kasih Jannah | All Rights Reserved</p>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
